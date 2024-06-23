@@ -3,12 +3,15 @@ package hello.core;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
 
 public class MemberApp {
 
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
+
+        AppConfig appConfig = new AppConfig();
+        // AppConfig를 통해 memberService를 받았으므로 구현체인 MemoryMemberRepository 객체의 참조값 가진 memberServiceImpl 받음
+        MemberService memberService = appConfig.memberService();
+
         Member member = new Member(1L, "memberA", Grade.VIP);
         memberService.join(member);
 
