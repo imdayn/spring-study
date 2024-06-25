@@ -2,6 +2,7 @@ package hello.core;
 
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
+import hello.core.discount.RateDiscountPolicy;
 import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
@@ -18,6 +19,11 @@ import hello.core.order.OrderServiceImpl;
  * DI(Dependency Injection) 우리말로는 의존관계 주입 또는 의존성 주입이라 한다.
  */
 public class AppConfig {
+    // 어떤 구현체를 사용할 것인지를 선택하는 역할을 AppConfig에서 하고 있기 때문에
+    // 외부에서 주입해준다고 해서 의존관계 주입, DI 컨테이너라고 한다.
+    // IoC 컨테이너, 어샘블러, 오브젝트 팩토리로 부르기도 한다.
+
+    // 추후 XML 파일로 역할을 대신할 수 있음
 
     public MemberService memberService() {
         // return new MemberServiceImpl(new MemoryMemberRepository()); // Control + Alt + M 으로 Refactor
@@ -39,5 +45,6 @@ public class AppConfig {
 
     private DiscountPolicy discountPolicy() {
         return new FixDiscountPolicy();
+        // return new RateDiscountPolicy();
     }
 }

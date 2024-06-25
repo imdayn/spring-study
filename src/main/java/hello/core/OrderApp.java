@@ -24,7 +24,7 @@ public class OrderApp {
         memberService.join(member);
 
         // 2. 주문 생성
-        Order order = orderService.createOrder(memberId, "itemA", 10000);
+        Order order = orderService.createOrder(memberId, "itemA", 20000);
 
         System.out.println("order = " + order);
         System.out.println("order.calculatePrice = " + order.calculatePrice());
